@@ -1,0 +1,23 @@
+TO DO:
+	Make going through border optional
+	Special fruit:
+		more points
+		fruit extravaganza
+	
+	Save highscores
+	Highscores Menu
+	Main menu
+	Pause: add text to screen and option to restart or go back to menu
+	Death menu
+		-add sound to death before going to menu
+	
+
+DONE:
+	Fix screen size - OK
+	Show score OK
+	Add w, a, s, d to controls OK
+	Add music OK
+		-Add option to mute music OK
+	Sound effects OK
+		-Check volume OK
+		-Add option to mute sound effects OK
