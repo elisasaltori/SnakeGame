@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Border
   - OnPauseOnly
+  - RankingInput
   layers:
   - Default
   - TransparentFX
