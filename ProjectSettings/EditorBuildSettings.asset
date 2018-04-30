@@ -14,3 +14,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: 5b1951292031555428c53ec63346ee8c
+  - enabled: 1
+    path: Assets/Scenes/instructions.unity
+    guid: 94b62d2d9de024e41a55f400fde98c26
+  - enabled: 1
+    path: Assets/Scenes/deathScreen.unity
+    guid: edc079688ad53794d8b711841dad28dc
+  - enabled: 1
+    path: Assets/Scenes/RankingScreen.unity
+    guid: f2e3389f084289d41b1edcb8902c3aa5

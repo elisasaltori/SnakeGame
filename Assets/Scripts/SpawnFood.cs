@@ -19,7 +19,11 @@ public class SpawnFood : MonoBehaviour {
     public static bool foodOnScreen = false; //is there food already on screen?
     private int width; //image width for the food
 
-  
+    private void Awake()
+    {
+        foodOnScreen = false;
+    }
+
     void Start () {
 
         //gets food width

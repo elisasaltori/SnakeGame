@@ -12,6 +12,24 @@ public class ScoreManager : MonoBehaviour
     private TextMesh scoreText;
     private static bool changed = false;
 
+    public static int Score
+    {
+        get
+        {
+            return score;
+        }
+
+        set
+        {
+            score = value;
+        }
+    }
+
+    private void Awake()
+    {
+        changed = true;
+        score = 0;
+    }
 
     void Start()
     {
@@ -23,7 +41,7 @@ public class ScoreManager : MonoBehaviour
     {
         if (changed)
         {
-            scoreText.text = "Pontos: " + ScoreManager.score; //updates text
+            scoreText.text = "Pontos: " + ScoreManager.Score; //updates text
             changed = false;
         }
 
@@ -32,14 +50,16 @@ public class ScoreManager : MonoBehaviour
     //Increase score by the given points
     static public void IncreaseScore(int points)
     {
-        score += points;
+        Score += points;
         changed = true;
     }
 
     //Resets score to 0
     static public void ResetScore()
     {
-        score = 0;
+        Score = 0;
         changed = true;
     }
+
+  
 }

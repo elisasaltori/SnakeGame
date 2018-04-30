@@ -15,7 +15,7 @@ public class MenuManagerScript : MonoBehaviour {
 
     public void loadRanking()
     {
-        SceneManager.LoadScene("MyScene");
+        SceneManager.LoadScene("RankingScreen");
     }
 
     public void loadCredits()
@@ -28,5 +28,9 @@ public class MenuManagerScript : MonoBehaviour {
         SceneManager.LoadScene("mainMenu");
     }
 
+    public void loadInstructions()
+    {
+        SceneManager.LoadScene("instructions");
+    }
 
 }

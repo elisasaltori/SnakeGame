@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Controls the snake (the player)
@@ -249,7 +250,8 @@ public class Snake : MonoBehaviour {
             else
             {
                 // ToDo 'You lose' screen
-                Debug.Log("you lost!");
+                GameOptions.finalScore = ScoreManager.Score;
+                SceneManager.LoadScene("deathScreen");
             }
            
         }
