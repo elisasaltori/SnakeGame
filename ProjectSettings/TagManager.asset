@@ -7,6 +7,7 @@ TagManager:
   - Border
   - OnPauseOnly
   - RankingInput
+  - Food
   layers:
   - Default
   - TransparentFX

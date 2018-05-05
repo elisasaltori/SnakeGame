@@ -1,15 +1,20 @@
 TO DO:
 	Make going through border optional
+	Choose the color of your snake!
 	Special fruit:
-		more points
 		fruit extravaganza
+			-music
+
+	Balance game!
+		-max speed
+		-fruit rates
+		-extravaganza count
+		-extravaganza timer
+		-bomb rate
+			
+	Increase chances of special food with time
+
 	
-	Save highscores
-	Highscores Menu
-	Main menu
-	Pause: add text to screen and option to restart or go back to menu
-	Death menu
-		-add sound to death before going to menu
 	
 
 DONE:
@@ -21,3 +26,16 @@ DONE:
 	Sound effects OK
 		-Check volume OK
 		-Add option to mute sound effects OK
+
+	Save highscores OK
+	Highscores Menu OK
+	Main menu OK
+	Pause: add text to screen and option to restart or go back to menu OK
+	Death menu OK
+		-add sound to death before going to menu OK
+	
+	Special fruit:
+		more points OK
+
+	Bomb: OK
+		has a chance of appearing when a fruit appears

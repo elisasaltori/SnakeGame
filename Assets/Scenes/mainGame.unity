@@ -682,6 +682,7 @@ GameObject:
   m_Component:
   - component: {fileID: 507686633}
   - component: {fileID: 507686632}
+  - component: {fileID: 507686634}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -713,6 +714,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &507686634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 507686631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8832bd13f15897439637b46a7467953, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodPrefab: {fileID: 1911017283670548, guid: f56ccfdcae846be42995ba8a9627eb4f, type: 2}
+  foodPrefabGreen: {fileID: 1586733983224988, guid: e2affba307e6d74428a47cbdef02018a,
+    type: 2}
+  foodPrefabGold: {fileID: 1282794976479538, guid: 7bfcd3cf363535f43b4c18f1e8abc6d8,
+    type: 2}
+  foodPrefabRainbow: {fileID: 1778938243352940, guid: 9a546e05eb0cfed47b967f2746b7455a,
+    type: 2}
+  bombPrefab: {fileID: 1695037374496528, guid: eb4f86a6e60b8384b872b6d1be090677, type: 2}
+  borderTop: {fileID: 315985629}
+  borderBottom: {fileID: 1753669493}
+  borderLeft: {fileID: 680988512}
+  borderRight: {fileID: 271654326}
+  greenFoodChance: 0.1
+  goldFoodChance: 0.1
+  rainbowFoodChance: 0.1
+  bombChance: 0.1
+  extravaganzaDuration: 10
+  speedUpTime: 1
 --- !u!1 &680988510
 GameObject:
   m_ObjectHideFlags: 0
@@ -886,7 +916,28 @@ Prefab:
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114825727542133236, guid: 55e30ceb96f94544c94d40907bd047ed,
+        type: 2}
+      propertyPath: basicFoodPoints
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114825727542133236, guid: 55e30ceb96f94544c94d40907bd047ed,
+        type: 2}
+      propertyPath: greenFoodPoints
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114825727542133236, guid: 55e30ceb96f94544c94d40907bd047ed,
+        type: 2}
+      propertyPath: goldFoodPoints
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114825727542133236, guid: 55e30ceb96f94544c94d40907bd047ed,
+        type: 2}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 507686631}
+    m_RemovedComponents:
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 55e30ceb96f94544c94d40907bd047ed, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1112041215
@@ -1798,7 +1849,6 @@ GameObject:
   - component: {fileID: 1883415405}
   - component: {fileID: 1883415404}
   - component: {fileID: 1883415403}
-  - component: {fileID: 1883415407}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1869,22 +1919,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1883415407
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1883415402}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8832bd13f15897439637b46a7467953, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  foodPrefab: {fileID: 1911017283670548, guid: f56ccfdcae846be42995ba8a9627eb4f, type: 2}
-  borderTop: {fileID: 315985629}
-  borderBottom: {fileID: 1753669493}
-  borderLeft: {fileID: 680988512}
-  borderRight: {fileID: 271654326}
 --- !u!1 &2081080809
 GameObject:
   m_ObjectHideFlags: 0
@@ -1912,13 +1946,12 @@ GameObject:
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 95374566146064770, guid: 55e30ceb96f94544c94d40907bd047ed,
-    type: 2}
-  m_PrefabInternal: {fileID: 745717334}
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2081080809}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2e4507cd0e1fc634d8c379d05797d1ae, type: 2}
+  m_Controller: {fileID: 9100000, guid: 5a610a6b9045c9e41981653184754643, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1944,6 +1977,10 @@ MonoBehaviour:
   borderBottom: {fileID: 1753669493}
   borderLeft: {fileID: 680988512}
   borderRight: {fileID: 271654326}
+  basicFoodPoints: 1
+  greenFoodPoints: 3
+  goldFoodPoints: 10
+  gameManager: {fileID: 507686631}
 --- !u!82 &2081080812
 AudioSource:
   m_ObjectHideFlags: 0

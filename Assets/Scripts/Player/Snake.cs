@@ -21,6 +21,13 @@ public class Snake : MonoBehaviour {
     public Transform borderLeft;
     public Transform borderRight;
 
+    //Food values
+    public int basicFoodPoints;
+    public int greenFoodPoints;
+    public int goldFoodPoints;
+
+    public GameObject gameManager;
+
     //Direction to which the snake is moving
     Vector2 dir = Vector2.zero;
     List<Transform> tail = new List<Transform>();
@@ -42,6 +49,7 @@ public class Snake : MonoBehaviour {
         //snake width
         width = (int)GetComponent<BoxCollider2D>().size.x;
         waitAfterPause = baseSpeed;
+        foodScript = gameManager.GetComponent<SpawnFood>();
     }
 	
 
@@ -197,16 +205,49 @@ public class Snake : MonoBehaviour {
         {
             // Get longer in next Move call
             ate = true;
-        
+
+            int points = 1;
+            if(coll.name.Equals("FoodPrefabBlue"))
+            {
+                points = basicFoodPoints;
            
+            }
+            else
+            {
+                if(coll.name.StartsWith("FoodPrefabGreen"))
+                {
+                    points = greenFoodPoints;
+     
+                }
+                else
+                {
+                    if(coll.name.StartsWith("FoodPrefabGold"))
+                    {
+                        points = goldFoodPoints;
+                    }
+                    else
+                    {
+                        if (coll.name.StartsWith("FoodPrefabRainbow"))
+                        {
+                            points = basicFoodPoints;
+                            //begin food extravaganza
+                            foodScript.BeginExtravaganza();
+                            
+
+                        }
+                    
+                    }
+                }
+            }
+            ScoreManager.IncreaseScore(points); //increases score
             // Remove the Food
             Destroy(coll.gameObject);
 
             SpawnFood.foodOnScreen = false;
             eatSound.Play(); //plays "eating" sound
-            ScoreManager.IncreaseScore(1); //increases score
 
-      
+
+
         }
         // Collided with Tail or Border
         else
@@ -215,45 +256,44 @@ public class Snake : MonoBehaviour {
             //makes snake appear on opposite side of the screen 
             if (coll.CompareTag("Border"))
             {
-                
+
                 var pos = transform.position;
 
-                if(dir == width * Vector2.up)
+                if (dir == width * Vector2.up)
                 {
                     pos.y = borderBottom.position.y + width;
                     transform.position = pos;
                 }
                 else
                 {
-                    if(dir == width * Vector2.down)
+                    if (dir == width * Vector2.down)
                     {
                         pos.y = borderTop.position.y - width;
                         transform.position = pos;
                     }
                     else
                     {
-                        if(dir == width * Vector2.left)
+                        if (dir == width * Vector2.left)
                         {
                             pos.x = borderRight.position.x - width;
                             transform.position = pos;
                         }
                         else
                         {
-                            pos.x = borderLeft.position.x +width;
+                            pos.x = borderLeft.position.x + width;
                             transform.position = pos;
                         }
 
                     }
                 }
-                
+
             }
             else
             {
-                // ToDo 'You lose' screen
                 GameOptions.finalScore = ScoreManager.Score;
                 SceneManager.LoadScene("deathScreen");
             }
-           
+
         }
     }
 
