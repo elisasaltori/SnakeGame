@@ -1,9 +1,9 @@
 TO DO:
 	Make going through border optional
 	Choose the color of your snake!
-	Special fruit:
-		fruit extravaganza
-			-music
+
+	fruit extravaganza
+		-music
 
 	Balance game!
 		-max speed

@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class MenuManagerScript : MonoBehaviour {
 
-	public void loadGame()
+    public void loadGame()
     {
         SceneManager.LoadScene("mainGame");
     }
@@ -32,5 +32,7 @@ public class MenuManagerScript : MonoBehaviour {
     {
         SceneManager.LoadScene("instructions");
     }
+
+  
 
 }

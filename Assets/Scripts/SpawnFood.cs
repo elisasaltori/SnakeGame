@@ -38,6 +38,7 @@ public class SpawnFood : MonoBehaviour {
     private bool extravaganza = false;
     private int extravaganzaCount = 0;
     private double extravaganzaTimer;
+    private GameObject[] extravaganzaFruit;
 
     private void Awake()
     {
@@ -68,11 +69,11 @@ public class SpawnFood : MonoBehaviour {
                 extravaganza = false;
 
                 //delete all food on screen
-                GameObject[] food = GameObject.FindGameObjectsWithTag("Food");
-                int n = food.Length;
+                //GameObject[] food = GameObject.FindGameObjectsWithTag("Food");
+                int n = extravaganzaFruit.Length;
                 for(int i=0; i<n; i++)
                 {
-                    Destroy(food[i]);
+                    Destroy(extravaganzaFruit[i]);
                 }
 
 
@@ -112,6 +113,8 @@ public class SpawnFood : MonoBehaviour {
        
     }
 
+    //Begins Food Extravaganza event
+    //lots of food is instatiated in the screen for a limited ammount of time
     public void BeginExtravaganza()
     {
         //food extravaganza is on
@@ -119,9 +122,13 @@ public class SpawnFood : MonoBehaviour {
 
         //random number of fruits on screen
         extravaganzaCount = (int)Random.Range(5, 15);
-        for (int i = extravaganzaCount; i>0; i--)
+
+        extravaganzaFruit = new GameObject[extravaganzaCount];
+
+        //spawns food on screen and saves their references for destroying them later
+        for (int i = extravaganzaCount-1; i>=0; i--)
         {
-            InstantiateFood();
+            extravaganzaFruit[i] = InstantiateFood();
         }
 
         //initiates timer
@@ -132,14 +139,15 @@ public class SpawnFood : MonoBehaviour {
 
     }
 
-    void InstantiateFood()
+    //Instantiates a piece of food on screen
+    GameObject InstantiateFood()
     {
-        //generates position randomly in the space delimited by the borders
         int x, y;
 
+        //generates position randomly in the space delimited by the borders
+        //loop checks if there isn't already another object in the desired position
         do
         {
-            //generates position randomly in the space delimited by the borders
             //x
             x = (int)Random.Range(borderLeft.position.x + 2, borderRight.position.x - 2);
             x = x - x % width; //making sure it stays on the grid
@@ -155,13 +163,13 @@ public class SpawnFood : MonoBehaviour {
 
         if (chance <= greenFoodChance)
         {
-            Instantiate(foodPrefabGreen, new Vector2(x, y), Quaternion.identity);
+            return Instantiate(foodPrefabGreen, new Vector2(x, y), Quaternion.identity);
         }
         else
         {
             if (chance > greenFoodChance && chance <= (greenFoodChance + goldFoodChance))
             {
-                Instantiate(foodPrefabGold, new Vector2(x, y), Quaternion.identity);
+                return Instantiate(foodPrefabGold, new Vector2(x, y), Quaternion.identity);
             }
             else
             {
@@ -169,11 +177,11 @@ public class SpawnFood : MonoBehaviour {
                     && chance < (greenFoodChance + goldFoodChance + rainbowFoodChance)
                     && !extravaganza) 
                 {
-                    Instantiate(foodPrefabRainbow, new Vector2(x, y), Quaternion.identity);
+                    return Instantiate(foodPrefabRainbow, new Vector2(x, y), Quaternion.identity);
                 }
                 else
                 {
-                    Instantiate(foodPrefab, new Vector2(x, y), Quaternion.identity);
+                    return Instantiate(foodPrefab, new Vector2(x, y), Quaternion.identity);
                 }
 
 
@@ -181,16 +189,18 @@ public class SpawnFood : MonoBehaviour {
         }
     }
 
-    void InstantiateBomb()
+    //Has the chance of instantiating a bomb on screen
+    GameObject InstantiateBomb()
     {
         double chance = Random.Range(0.0f, 1.0f);
         int x, y;
 
         if (chance <= bombChance)
         {
+            //generates position randomly in the space delimited by the borders
+            //loop checks if there isn't already another object in the desired position
             do
             {
-                //generates position randomly in the space delimited by the borders
                 //x
                 x = (int)Random.Range(borderLeft.position.x + 2, borderRight.position.x - 2);
                 x = x - x % width; //making sure it stays on the grid
@@ -201,10 +211,11 @@ public class SpawnFood : MonoBehaviour {
 
             } while (Physics2D.OverlapBox(new Vector2(x, y), new Vector2(3,3) , 0));
 
-            Instantiate(bombPrefab, new Vector2(x, y), Quaternion.identity);
+            return Instantiate(bombPrefab, new Vector2(x, y), Quaternion.identity);
         }
 
-        
+        return null;
+
       
     }
 }

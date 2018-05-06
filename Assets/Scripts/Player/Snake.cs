@@ -40,6 +40,7 @@ public class Snake : MonoBehaviour {
     private AudioSource eatSound;
     private int width; //snake width
     private double waitAfterPause;
+    private bool bordersKill;
 
  
     void Start () {
@@ -50,6 +51,7 @@ public class Snake : MonoBehaviour {
         width = (int)GetComponent<BoxCollider2D>().size.x;
         waitAfterPause = baseSpeed;
         foodScript = gameManager.GetComponent<SpawnFood>();
+        bordersKill = GameOptions.bordersKill;
     }
 	
 
@@ -253,8 +255,9 @@ public class Snake : MonoBehaviour {
         else
         {
             //Collided with border
+            //if borders arent set to kill
             //makes snake appear on opposite side of the screen 
-            if (coll.CompareTag("Border"))
+            if (coll.CompareTag("Border") && !bordersKill)
             {
 
                 var pos = transform.position;

@@ -8,6 +8,7 @@ TagManager:
   - OnPauseOnly
   - RankingInput
   - Food
+  - Snake
   layers:
   - Default
   - TransparentFX
