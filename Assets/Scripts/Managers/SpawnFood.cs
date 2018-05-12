@@ -27,17 +27,23 @@ public class SpawnFood : MonoBehaviour {
     public double goldFoodChance;
     public double rainbowFoodChance;
 
+    public double greenFoodMaxChance;
+    public double goldFoodMaxChance;
+    public double rainbowFoodMaxChance;
+
     //bomb chance is unrelated to FoodChances
     public double bombChance;
+    public double bombMaxChance;
 
     public double extravaganzaDuration;
     public double speedUpTime;
     public static bool foodOnScreen = false; //is there food already on screen?
+    public bool extravaganza = false;
+    public double extravaganzaTimer;
 
     private int width; //image width for the food
-    private bool extravaganza = false;
+  
     private int extravaganzaCount = 0;
-    private double extravaganzaTimer;
     private GameObject[] extravaganzaFruit;
 
     private void Awake()
@@ -133,6 +139,7 @@ public class SpawnFood : MonoBehaviour {
 
         //initiates timer
         extravaganzaTimer = extravaganzaDuration;
+
     
         //music
         //TODO!!!!!
@@ -161,6 +168,8 @@ public class SpawnFood : MonoBehaviour {
         //new food object on screen
         double chance = Random.Range(0.0f, 1.0f);
 
+        IncreaseChances();
+
         if (chance <= greenFoodChance)
         {
             return Instantiate(foodPrefabGreen, new Vector2(x, y), Quaternion.identity);
@@ -187,6 +196,8 @@ public class SpawnFood : MonoBehaviour {
 
             }
         }
+
+
     }
 
     //Has the chance of instantiating a bomb on screen
@@ -217,6 +228,27 @@ public class SpawnFood : MonoBehaviour {
         return null;
 
       
+    }
+
+    //Increases the rate at which special food or bombs appear
+    private void IncreaseChances()
+    {
+        greenFoodChance += 0.003;
+        goldFoodChance += 0.002;
+        rainbowFoodChance += 0.0015;
+        bombChance += 0.001;
+
+        if (greenFoodChance > greenFoodMaxChance)
+            greenFoodChance = greenFoodMaxChance;
+
+        if (goldFoodChance > goldFoodMaxChance)
+            goldFoodChance = goldFoodMaxChance;
+
+        if (rainbowFoodChance > rainbowFoodMaxChance)
+            rainbowFoodChance = rainbowFoodMaxChance;
+
+        if (bombChance > bombMaxChance)
+            bombChance = bombMaxChance;
     }
 }
 

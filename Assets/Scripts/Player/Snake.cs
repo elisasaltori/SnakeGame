@@ -11,7 +11,10 @@ public class Snake : MonoBehaviour {
 
     //Initial speed factor
     public float speed = 1;
-    
+
+    //time between each snake movement when speed=1
+    public float baseSpeed = 0.15F;
+
     // Tail Prefab
     public GameObject tailPrefab;
 
@@ -31,12 +34,12 @@ public class Snake : MonoBehaviour {
     //Direction to which the snake is moving
     Vector2 dir = Vector2.zero;
     List<Transform> tail = new List<Transform>();
+    int addTail;
     bool ate = false; //has food been eaten?
     private float period = 0.0f;
     private SpawnFood foodScript;
     private bool paused = false;
     private Vector2 savedDir = Vector2.right;
-    private float baseSpeed = 0.15F;
     private AudioSource eatSound;
     private int width; //snake width
     private double waitAfterPause;
@@ -172,7 +175,7 @@ public class Snake : MonoBehaviour {
         transform.Translate(dir);
 
         // Ate something? Then insert new Element into gap
-        if (ate)
+        if (addTail>0)
         {
             // Load Prefab into the world
             GameObject g = (GameObject)Instantiate(tailPrefab,
@@ -182,10 +185,16 @@ public class Snake : MonoBehaviour {
             // Keep track of it in our tail list
             tail.Insert(0, g.transform);
 
+            addTail--;
+
             // Reset the flag
-            ate = false;
-            if (speed <= 10)
-                speed += 0.05F; 
+            //increase speed only onse
+            if (ate) {
+                ate = false;
+                if (speed <= 10)
+                    speed += 0.03F;
+            }
+
         }
         // Do we have a Tail?
         else if (tail.Count > 0)
@@ -241,6 +250,7 @@ public class Snake : MonoBehaviour {
                     }
                 }
             }
+            addTail = points;
             ScoreManager.IncreaseScore(points); //increases score
             // Remove the Food
             Destroy(coll.gameObject);

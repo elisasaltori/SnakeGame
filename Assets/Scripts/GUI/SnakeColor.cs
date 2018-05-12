@@ -11,22 +11,26 @@ public class SnakeColor : MonoBehaviour {
     public Sprite[] snakeColors;
     public GameObject[] snake;
 	private int currentPos = 0;
-	
+
+    void Start()
+    {
+        currentPos = GameOptions.snakeColor;
+
+        ColorSnake();
+
+    }
+
+    //function for right button when choosing the color of the snake
     public void ClickRight()
     {
         currentPos = (currentPos + 1) % snakeColors.Length;
 
         GameOptions.snakeColor = currentPos;
 
-        Image aux;
-
-        for(int i=0; i<snake.Length; i++)
-        {
-            aux = snake[i].GetComponent<Image>();
-            aux.sprite = snakeColors[currentPos];
-        }
+        ColorSnake();
     }
 
+    //function for left button when choosing the color of the snake
     public void ClickLeft()
     {
         currentPos = (currentPos - 1) % snakeColors.Length;
@@ -35,6 +39,12 @@ public class SnakeColor : MonoBehaviour {
 
         GameOptions.snakeColor = currentPos;
 
+        ColorSnake();
+    }
+
+    //changes color of snake on main menu
+    private void ColorSnake()
+    {
         Image aux;
 
         for (int i = 0; i < snake.Length; i++)

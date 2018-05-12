@@ -9,6 +9,7 @@ using UnityEngine;
 public class SoundButtonScript : MonoBehaviour {
 
     private SoundManager soundManager;
+    private ExtravaganzaTimer soundManagerTimer;
     public Sprite OffSprite;
     public Sprite OnSprite;
     private Button btn;
@@ -25,6 +26,12 @@ public class SoundButtonScript : MonoBehaviour {
             soundManager = head.GetComponent<SoundManager>();
         }
 
+        GameObject gameManager = GameObject.Find("GameManager");
+        if (gameManager != null)
+        {
+            soundManagerTimer = gameManager.GetComponent<ExtravaganzaTimer>();
+        }
+
         if (!GameOptions.soundOn)
         {
             ChangeImage();
@@ -37,11 +44,11 @@ public class SoundButtonScript : MonoBehaviour {
         if(soundManager!= null)
         {
             soundManager.SwitchSound();
+            soundManagerTimer.SwitchSound();
         }
-        else
-        {
-            GameOptions.soundOn = !GameOptions.soundOn;
-        }
+      
+        GameOptions.soundOn = !GameOptions.soundOn;
+        
         
         ChangeImage();
 

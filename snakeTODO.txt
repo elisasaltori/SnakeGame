@@ -1,7 +1,5 @@
 TO DO:
-	Make going through border optional
-	Choose the color of your snake!
-
+	
 	fruit extravaganza
 		-music
 
@@ -39,3 +37,6 @@ DONE:
 
 	Bomb: OK
 		has a chance of appearing when a fruit appears
+
+	Make going through border optional OK
+	Choose the color of your snake! OK
