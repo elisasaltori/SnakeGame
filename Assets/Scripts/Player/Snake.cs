@@ -81,6 +81,7 @@ public class Snake : MonoBehaviour {
                 if (waitAfterPause <= 0) //delay done
                 {
                     MoveInput(); //gets player input for movement
+                    waitAfterPause = 0.9 * baseSpeed / speed;
                    
                 }
                 else //delay ongoing
@@ -111,13 +112,11 @@ public class Snake : MonoBehaviour {
     {
         if (paused)
         {
-            //TO DO UNPAUSE GAME
             dir = savedDir;
             paused = false;
         }
         else
         {
-            //TO DO PAUSE GAME
             savedDir = dir;
             dir = Vector2.zero;
             paused = true;

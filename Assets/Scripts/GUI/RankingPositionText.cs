@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Controls text about the player's position in ranking in the death screen
+/// </summary>
 public class RankingPositionText : MonoBehaviour {
 
 	// Use this for initialization

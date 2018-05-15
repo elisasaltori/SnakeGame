@@ -741,14 +741,14 @@ MonoBehaviour:
   borderLeft: {fileID: 680988512}
   borderRight: {fileID: 271654326}
   greenFoodChance: 0.3
-  goldFoodChance: 0.01
+  goldFoodChance: 0.1
   rainbowFoodChance: 0.05
   greenFoodMaxChance: 0.4
   goldFoodMaxChance: 0.3
   rainbowFoodMaxChance: 0.2
-  bombChance: 0.05
-  bombMaxChance: 0.3
-  extravaganzaDuration: 6
+  bombChance: 0.2
+  bombMaxChance: 0.8
+  extravaganzaDuration: 9
   speedUpTime: 1
   extravaganza: 0
   extravaganzaTimer: 0
@@ -779,11 +779,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 886e344eebd0af344ad7dec55d5694c9, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0d206c88f2f0709438eba260a19494d1, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1492,7 +1492,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 6df56dba89cf86f4a913a14e70358003, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.73
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0

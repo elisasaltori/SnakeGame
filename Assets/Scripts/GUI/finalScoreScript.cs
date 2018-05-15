@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Shows final score on death screen
+/// </summary>
 public class finalScoreScript : MonoBehaviour {
 
 

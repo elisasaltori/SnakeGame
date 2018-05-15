@@ -33,6 +33,10 @@ public class MenuManagerScript : MonoBehaviour {
         SceneManager.LoadScene("instructions");
     }
 
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
   
 
 }

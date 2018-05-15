@@ -18,14 +18,18 @@ public class SoundButtonScript : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        //initializes button
         btn = this.GetComponent<Button>();
         btn.onClick.AddListener(SwitchSound);
+
+        //gets audio source from snake (bips when eating)
         GameObject head = GameObject.Find("Head");
         if(head != null)
         {
             soundManager = head.GetComponent<SoundManager>();
         }
 
+        //gets audio source from GameManager(Extravaganza timer)
         GameObject gameManager = GameObject.Find("GameManager");
         if (gameManager != null)
         {
@@ -39,6 +43,7 @@ public class SoundButtonScript : MonoBehaviour {
 
     }
 
+    //Switches sound on and off
     void SwitchSound()
     {
         if(soundManager!= null)
@@ -54,6 +59,7 @@ public class SoundButtonScript : MonoBehaviour {
 
     }
 
+    //Changes between on and off button img
     public void ChangeImage()
     {
         if (btn.image.sprite == OnSprite)

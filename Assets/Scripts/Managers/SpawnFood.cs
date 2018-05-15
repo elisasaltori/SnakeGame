@@ -75,7 +75,7 @@ public class SpawnFood : MonoBehaviour {
                 extravaganza = false;
 
                 //delete all food on screen
-                //GameObject[] food = GameObject.FindGameObjectsWithTag("Food");
+
                 int n = extravaganzaFruit.Length;
                 for(int i=0; i<n; i++)
                 {
@@ -89,15 +89,7 @@ public class SpawnFood : MonoBehaviour {
                 //reduce timer
                 extravaganzaTimer -= UnityEngine.Time.deltaTime;
 
-                //if timer is running out
-                if (extravaganzaTimer <= speedUpTime)
-                {
-                    //speed up song
-                    //TODO!!!
-                }
-
-
-
+        
             }
         }
         //no extravaganza
@@ -135,14 +127,12 @@ public class SpawnFood : MonoBehaviour {
         for (int i = extravaganzaCount-1; i>=0; i--)
         {
             extravaganzaFruit[i] = InstantiateFood();
+            InstantiateBomb();
         }
 
         //initiates timer
         extravaganzaTimer = extravaganzaDuration;
 
-    
-        //music
-        //TODO!!!!!
 
     }
 
@@ -235,8 +225,8 @@ public class SpawnFood : MonoBehaviour {
     {
         greenFoodChance += 0.003;
         goldFoodChance += 0.002;
-        rainbowFoodChance += 0.0015;
-        bombChance += 0.001;
+        rainbowFoodChance += 0.002;
+        bombChance += 0.01;
 
         if (greenFoodChance > greenFoodMaxChance)
             greenFoodChance = greenFoodMaxChance;

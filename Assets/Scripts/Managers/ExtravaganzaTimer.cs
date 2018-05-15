@@ -42,7 +42,7 @@ public class ExtravaganzaTimer : MonoBehaviour {
             }
             else //music is already playing
             {
-                soundPlayer.pitch = (float)(extravaganzaDuration+1) / (float)(foodScript.extravaganzaTimer+1);
+                soundPlayer.pitch = (float)(extravaganzaDuration+2) / (float)(foodScript.extravaganzaTimer+2);
                 if (foodScript.extravaganzaTimer <= 0.5*extravaganzaDuration && currentAudio==0)
                 {
                     SpeedUp();
