@@ -103,4 +103,17 @@ public static class RankingManager{
 
         return pos;
     }
+
+    //Resets ranking to original state
+    public static void ResetRanking()
+    {
+        ranking = null;
+
+        string path = Application.dataPath;
+
+        string filePath = System.IO.Path.Combine(Application.persistentDataPath, gameDataProjectFilePath);
+        File.Delete(filePath);
+
+        SaveRanking();
+    }
 }

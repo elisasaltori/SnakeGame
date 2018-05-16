@@ -16,6 +16,12 @@ public class rankingText : MonoBehaviour {
 
     }
 
+    public void ResetRanking()
+    {
+        ranking = RankingManager.LoadRanking();
+        writeRanking();
+    }
+
     void writeRanking()
     {
         int length = ranking.names.Length;
