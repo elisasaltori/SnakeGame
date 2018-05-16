@@ -4,6 +4,7 @@ using UnityEngine;
 
 /// <summary>
 /// Controls the music playing in the game
+/// Persists between scenes so that the music doesn't get interrupted
 /// </summary>
 public class MusicPlayerScript : MonoBehaviour {
 
