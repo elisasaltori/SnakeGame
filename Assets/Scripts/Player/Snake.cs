@@ -271,21 +271,21 @@ public class Snake : MonoBehaviour {
 
                 var pos = transform.position;
 
-                if (dir == width * Vector2.up)
+                if (coll.name.StartsWith("BorderTop"))
                 {
                     pos.y = borderBottom.position.y + width;
                     transform.position = pos;
                 }
                 else
                 {
-                    if (dir == width * Vector2.down)
+                    if (coll.name.StartsWith("BorderBottom"))
                     {
                         pos.y = borderTop.position.y - width;
                         transform.position = pos;
                     }
                     else
                     {
-                        if (dir == width * Vector2.left)
+                        if (coll.name.StartsWith("BorderLeft"))
                         {
                             pos.x = borderRight.position.x - width;
                             transform.position = pos;
